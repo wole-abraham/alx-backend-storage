@@ -5,7 +5,6 @@ DELIMITER $$
 
 CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
 BEGIN
-    DECLARE average_score DECIMAL(5, 2);
 
     -- Calculate the average score for the specified user
     SELECT AVG(score) INTO average_score
