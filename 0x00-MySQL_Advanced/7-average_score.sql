@@ -1,4 +1,4 @@
- -- Calculate the average score for the specified user
+-- Calculate the average score for the specified user
 
 
 DELIMITER $$
