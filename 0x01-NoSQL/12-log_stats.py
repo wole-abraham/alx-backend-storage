@@ -20,6 +20,7 @@ import pymongo
 
 
 def logs():
+    """ script parses logs """
     client = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = client.logs.nginx
     print(f"{mydb.count_documents({})} logs")
