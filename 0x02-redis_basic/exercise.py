@@ -82,7 +82,7 @@ class Cache:
 
     @count_calls
     @call_history
-    def store(self, data: Union[int, float, bytes, str]) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """ create a unique key and stores the data"""
         key = str(uuid4())
         self._redis.set(key, data)
