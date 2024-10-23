@@ -8,6 +8,17 @@ from uuid import uuid4
 from typing import Union, Optional, Callable
 
 
+def count_calls(method: Callable) -> callable:
+    key = method.__qualname__
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """wrapper for the decorated function """
+        self._redis.incr(key)
+        return method(self, *args, **kwargs)
+    return wrapper
+
+
 class Cache:
     """Create a Cache class"""
 
