@@ -30,6 +30,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[int, float, bytes, str]) -> str:
         """ create a unique key and stores the data"""
         key = str(uuid4())
