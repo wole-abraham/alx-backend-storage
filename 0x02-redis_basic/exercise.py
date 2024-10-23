@@ -5,7 +5,7 @@ caching is the first step
 """
 import redis
 from uuid import uuid4
-from typing import Union
+from typing import Union, Optional, Callable
 
 
 class Cache:
@@ -24,3 +24,26 @@ class Cache:
         key = str(uuid4())
         self._redis.set(key, data)
         return key
+
+    def get(self, key: str, fn: Optional[callable] = None):
+        """ get value from the key """
+        data = self._redis.get(key)
+        if fn:
+            data = fn(data)
+        return data
+
+    def get_str(self, data: str) -> str:
+        """ automatically parametrize Cache.get with the correct
+        conversion function"""
+        data = self._redis.get(data)
+        return data.decode("utf-8")
+
+    def get_int(self, data: str) -> int:
+        """automatically parametrize Cache.get with the correct
+        conversion function"""
+        data = self._redis.get(data)
+        try:
+            data = int(data.decode("utf-8"))
+        except Exception:
+            value = 0
+        return value
