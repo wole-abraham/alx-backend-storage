@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 writing strings to redis
+caching is the first step
 """
 import redis
 from uuid import uuid4
