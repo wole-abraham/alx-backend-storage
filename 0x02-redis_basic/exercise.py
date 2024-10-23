@@ -10,6 +10,7 @@ from functools import wraps
 
 
 def count_calls(method: Callable) -> callable:
+    """returns a callable"""
     key = method.__qualname__
 
     @wraps(method)
