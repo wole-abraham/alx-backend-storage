@@ -22,10 +22,12 @@ def count_calls(method: Callable) -> callable:
 
 
 def call_history(method: Callable) -> callable:
+    """store the history of inputs and outputs"""
     key = method.__qualname__
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
+        """wrapper for the decorated function"""
         input = str(args)
         self._redis.rpush(key + ":inputs", input)
         output = str(method(self, *args, **kwargs))
