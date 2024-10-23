@@ -8,6 +8,8 @@ from typing import Union
 
 
 class Cache:
+    """Create a Cache class"""
+
     def __init__(self):
         """ stores an instance of reddis cient
             as a private variable name _redis
