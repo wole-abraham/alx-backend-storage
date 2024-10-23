@@ -6,6 +6,7 @@ caching is the first step
 import redis
 from uuid import uuid4
 from typing import Union, Optional, Callable
+from functools import wraps
 
 
 def count_calls(method: Callable) -> callable:
